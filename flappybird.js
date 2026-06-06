@@ -61,8 +61,10 @@ window.onload = function() {
     bottomPipeImg.src = "./bottompipe.png";
 
     requestAnimationFrame(update);
-    setInterval(placePipes, 1500); //every 1.5 seconds
+    setInterval(placePipes, 1500); // every 1.5 seconds
     document.addEventListener("keydown", moveBird);
+    document.addEventListener("mousedown", moveBird);
+    document.addEventListener("touchstart", moveBird);
 }
 
 function update() {
@@ -146,17 +148,22 @@ function placePipes() {
 }
 
 function moveBird(e) {
-    if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX") {
-        //jump
-        velocityY = -6;
-
-        //reset game
-        if (gameOver) {
-            bird.y = birdY;
-            pipeArray = [];
-            score = 0;
-            gameOver = false;
+    if (e.type === "keydown") {
+        if (e.code !== "Space" && e.code !== "ArrowUp" && e.code !== "KeyX") {
+            return;
         }
+        e.preventDefault();
+    }
+
+    // jump
+    velocityY = -6;
+
+    // reset game
+    if (gameOver) {
+        bird.y = birdY;
+        pipeArray = [];
+        score = 0;
+        gameOver = false;
     }
 }
 

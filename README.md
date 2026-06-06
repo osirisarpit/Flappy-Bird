@@ -6,6 +6,13 @@
 
 In this tutorial, you will learn to create the flappy bird game with html, css, and javascript. Specifically, you will learn how to code the game using html5 canvas. 
 
-Throughout the tutorial, you will learn how to create the game loop, add images onto the canvas, add click handlers to make the flappy bird jump, randomly generate pipes and move them across the screen, detect collisions between the flappy bird and each pipe, and add a running score. 
+Throughout the tutorial, you will learn how to create the game loop, add images onto the canvas, add click handlers to make the flappy bird jump, randomly generate pipes and move them across the screen, detect collisions between the flappy bird and each pipe, and add a running score.
+
+## Deployment
+
+This repository is ready to deploy as a static website. Simply host the contents of this folder on any static host, or use GitHub Pages by enabling Pages for this repository and serving from the `master` branch or `gh-pages` branch.
+
+- `index.html` is the entry point.
+- All assets use relative paths so the game works from a repo subfolder or site root.
 
 ![flappy-bird-sample](https://user-images.githubusercontent.com/78777681/219966636-72584cb3-d471-41c0-872f-62c230dccc47.png)
