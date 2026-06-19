@@ -120,7 +120,8 @@ window.onload = function() {
     sfxHit = new Audio("./sfx_hit.wav");
     sfxHit.volume = 0.5;
 
-    sfxDie = new Audio("./sfx_die.wav");
+    // Use provided Mario death MP3 (better quality) if available
+    sfxDie = new Audio("./Mario Death - Sound Effect (HD).mp3");
     sfxDie.volume = 0.5;
 
     // Button listeners
