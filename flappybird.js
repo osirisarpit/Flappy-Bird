@@ -128,6 +128,7 @@ window.onload = function() {
     document.getElementById("create-btn").addEventListener("click", showCreate);
     document.getElementById("play-btn").addEventListener("click", startGame);
     document.getElementById("logout-btn").addEventListener("click", logout);
+    document.getElementById("auth-leaderboard-btn").addEventListener("click", () => toggleAuthLeaderboard("auth"));
 
     // Back buttons
     document.querySelectorAll(".back-btn").forEach(btn => {
@@ -145,13 +146,6 @@ function hideAllScreens() {
     createScreen.classList.add("hidden");
     playScreen.classList.add("hidden");
     board.classList.add("hidden");
-}
-
-function showAuth() {
-    hideAllScreens();
-    authScreen.classList.remove("hidden");
-    document.getElementById("login-msg").textContent = "";
-    document.getElementById("create-msg").textContent = "";
 }
 
 function showLogin() {
@@ -178,8 +172,12 @@ function logout() {
 }
 
 // Leaderboard functions
-async function loadLeaderboard() {
+async function loadLeaderboard(highlightUsername = currentUser) {
     const listEl = document.getElementById("leaderboard-list");
+    await renderLeaderboard(listEl, highlightUsername);
+}
+
+async function renderLeaderboard(listEl, highlightUsername = null) {
     listEl.innerHTML = '<p class="loading">Loading...</p>';
 
     try {
@@ -206,7 +204,7 @@ async function loadLeaderboard() {
 
         listEl.innerHTML = players.map((p, i) => {
             const rankClass = i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
-            const userClass = p.username === currentUser ? 'current-user' : '';
+            const userClass = highlightUsername && p.username === highlightUsername ? 'current-user' : '';
             return `<div class="leaderboard-row ${userClass}">
                 <span class="leaderboard-rank ${rankClass}">${i + 1}</span>
                 <span class="leaderboard-name">${p.username}</span>
@@ -216,6 +214,41 @@ async function loadLeaderboard() {
     } catch (err) {
         console.error("Leaderboard error:", err);
         listEl.innerHTML = '<p class="loading">Failed to load</p>';
+    }
+}
+
+async function toggleAuthLeaderboard(screen) {
+    const panel = document.getElementById(`${screen}-leaderboard`);
+    const button = document.getElementById(`${screen}-leaderboard-btn`);
+    if (!panel.classList.contains("hidden")) {
+        panel.classList.add("hidden");
+        button.textContent = "View leaderboard";
+        return;
+    }
+
+    let username = null;
+    if (screen !== "auth") {
+        username = document.getElementById(`${screen}-username`).value.trim();
+    }
+
+    panel.classList.remove("hidden");
+    button.textContent = "Hide leaderboard";
+    const listEl = document.getElementById(`${screen}-leaderboard-list`);
+    await renderLeaderboard(listEl, username || null);
+}
+
+function showAuth() {
+    hideAllScreens();
+    authScreen.classList.remove("hidden");
+    document.getElementById("login-msg").textContent = "";
+    document.getElementById("create-msg").textContent = "";
+    const authPanel = document.getElementById("auth-leaderboard");
+    const authButton = document.getElementById("auth-leaderboard-btn");
+    if (authPanel) {
+        authPanel.classList.add("hidden");
+    }
+    if (authButton) {
+        authButton.textContent = "View leaderboard";
     }
 }
 

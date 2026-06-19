@@ -192,8 +192,49 @@ body {
     border: 1px solid #dadce0 !important;
 }
 
+button.secondary-btn {
+    background-color: #34A853;
+    color: white;
+    border: 1px solid #34A853;
+    box-shadow: 0 6px 14px rgba(52, 168, 83, 0.18);
+    width: 100%;
+    border-radius: 28px;
+    padding: 14px 18px;
+    font-weight: 600;
+    margin-top: 18px;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+button.secondary-btn:hover {
+    background-color: #2d9e46;
+    border-color: #2d9e46;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(52, 168, 83, 0.24);
+}
+
 .back-btn:hover {
     background-color: #f1f3f4 !important;
+}
+
+#auth-leaderboard,
+#login-leaderboard,
+#create-leaderboard {
+    margin-top: 20px;
+    width: 100%;
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 20px;
+    min-width: 320px;
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+#auth-leaderboard h3,
+#login-leaderboard h3,
+#create-leaderboard h3 {
+    margin: 0 0 10px 0;
+    color: #202124;
+    text-align: center;
 }
 
 #login-msg, #create-msg {
@@ -330,6 +371,11 @@ body {
 
 /* Game Board */
 #board {
-    /* background-color: skyblue; */
+    background-color: #60b2ff;
     background-image: url("./flappybirdbg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    border-radius: 24px;
 }
