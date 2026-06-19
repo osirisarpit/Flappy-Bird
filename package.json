@@ -1,0 +1,26 @@
+{
+  "name": "flappy-bird",
+  "version": "1.0.0",
+  "description": "- Coding Tutorial: https://youtu.be/jj5ADM2uywg\r - Demo: https://imkennyyip.github.io/flappy-bird/\r - Learn how to add music/sounds: https://youtu.be/UQA5jG-yh78\r - Learn how to add animations: https://youtu.be/94Vw8teCElM",
+  "main": "flappybird.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ImKennyYip/flappy-bird.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ImKennyYip/flappy-bird/issues"
+  },
+  "homepage": "https://github.com/ImKennyYip/flappy-bird#readme",
+  "dependencies": {
+    "firebase": "^12.15.0"
+  },
+  "devDependencies": {
+    "vite": "^8.0.16"
+  }
+}

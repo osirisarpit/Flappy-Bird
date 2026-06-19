@@ -6,10 +6,68 @@
         <meta name="description" content="A static HTML5 Canvas Flappy Bird game ready for GitHub Pages and other static hosts.">
         <title>Flappy Bird</title>
         <link rel="stylesheet" href="flappybird.css">
-        <script src="flappybird.js" defer></script>
+        <script src="flappybird.js" type="module"></script>
     </head>
     <body>
         <noscript>Please enable JavaScript to play Flappy Bird.</noscript>
-        <canvas id="board" aria-label="Flappy Bird game board"></canvas>
+
+        <!-- Floating Circles Background -->
+        <div id="circles-bg"></div>
+
+        <!-- Auth Screen (shown first) -->
+        <div id="auth-screen">
+            <h1><span>F</span><span>l</span><span>a</span><span>p</span><span>p</span><span>y</span> Bird</h1>
+            <p id="welcome-msg">Please login or create an account to play</p>
+            <div id="auth-buttons">
+                <button id="login-btn">Login</button>
+                <button id="create-btn">Create Account</button>
+            </div>
+        </div>
+
+        <!-- Login Screen -->
+        <div id="login-screen" class="hidden">
+            <h2>Login</h2>
+            <form id="login-form">
+                <input type="text" id="login-username" placeholder="Username" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <button type="button" class="back-btn">Back</button>
+            </form>
+            <p id="login-msg"></p>
+        </div>
+
+        <!-- Create Account Screen -->
+        <div id="create-screen" class="hidden">
+            <h2>Create Account</h2>
+            <form id="create-form">
+                <input type="text" id="create-username" placeholder="Username" required>
+                <input type="password" id="create-password" placeholder="Password" required>
+                <input type="password" id="create-confirm" placeholder="Confirm Password" required>
+                <button type="submit">Create</button>
+                <button type="button" class="back-btn">Back</button>
+            </form>
+            <p id="create-msg"></p>
+        </div>
+
+        <!-- Play Screen (shown after login/create) -->
+        <div id="play-screen" class="hidden">
+            <h1><span>F</span><span>l</span><span>a</span><span>p</span><span>p</span><span>y</span> Bird</h1>
+            <p id="player-greeting">Welcome!</p>
+            <div id="play-screen-content">
+                <div id="play-buttons">
+                    <button id="play-btn">Play</button>
+                    <button id="logout-btn">Logout</button>
+                </div>
+                <div id="leaderboard">
+                    <h3>Leaderboard</h3>
+                    <div id="leaderboard-list">
+                        <p class="loading">Loading...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Canvas -->
+        <canvas id="board" class="hidden" aria-label="Flappy Bird game board"></canvas>
     </body>
 </html>
